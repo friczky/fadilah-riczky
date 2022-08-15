@@ -8,6 +8,7 @@ use App\Models\Skils;
 use App\Models\Works;
 use App\Models\Educations;
 use App\Models\Contact;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,7 @@ class HomeController extends Controller
         $works = Works::all();
         $educations = Educations::all();
         $skils = Skils::all();
-        return view('fe.pages.home',compact('about','works','educations','skils'));
+        $user = User::where('id', 1)->first();
+        return view('fe.pages.home',compact('about','works','educations','skils','user'));
     }
 }
