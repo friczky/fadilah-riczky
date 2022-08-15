@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\About;
+use App\Models\Skils;
+use App\Models\Works;
+use App\Models\Educations;
+use App\Models\Contact;
 
 class HomeController extends Controller
 {
@@ -13,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $about = About::all();
+        $works = Works::all();
+        $educations = Educations::all();
+        $skils = Skils::all();
+        return view('fe.pages.home',compact('about','works','educations','skils'));
     }
 }
